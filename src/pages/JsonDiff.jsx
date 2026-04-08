@@ -1,11 +1,10 @@
-import React from 'react'
+import ToolPlaceholder from '../components/ToolPlaceholder'
 
 export default function JsonDiff() {
   return (
-    <div className="p-10">
-      <a href="/" className="text-amber-800 hover:underline">← Back to tools</a>
-      <h1 className="mt-6 text-4xl font-bold">JSON Shape Diff</h1>
-      <p className="mt-4 text-stone-700">Tool implementation coming soon...</p>
-    </div>
+    <ToolPlaceholder
+      title="JSON Shape Diff"
+      description="Compare two JSON payloads and surface missing keys, type mismatches, and schema drift before deployment."
+    />
   )
 }

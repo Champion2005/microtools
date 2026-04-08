@@ -1,45 +1,62 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
+
+const statusStyles = {
+  Planned: 'border border-surface-700 bg-surface-900 text-slate-300',
+  'In Progress': 'border border-brand-400/40 bg-brand-500/20 text-brand-200',
+}
 
 export default function Home({ tools }) {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_10%_0%,#ffe4b5,transparent_40%),radial-gradient(circle_at_90%_0%,#ffc6a9,transparent_35%),linear-gradient(180deg,#fffdf9_0%,#f9f2e8_100%)] px-5 py-10 text-stone-900 sm:px-8 sm:py-14">
-      <section className="mx-auto max-w-5xl">
-        <p className="inline-flex items-center rounded-full border border-amber-500/30 bg-amber-100/70 px-4 py-2 text-sm font-semibold uppercase tracking-[0.15em] text-amber-800">
-          microtools starter kit
+    <main className="min-h-screen bg-linear-to-b from-surface-950 via-surface-900 to-surface-950 px-4 py-10 sm:px-8 sm:py-14">
+      <section className="mx-auto max-w-6xl">
+        <p className="inline-flex items-center rounded-full border border-brand-400/30 bg-brand-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-brand-200">
+          microtools command deck
         </p>
 
-        <h1 className="display-font mt-6 max-w-3xl text-4xl leading-tight sm:text-6xl">
-          Build tiny tools that solve very specific problems.
+        <h1 className="mt-6 max-w-4xl font-display text-4xl font-semibold leading-tight text-slate-50 sm:text-5xl lg:text-6xl">
+          Build focused utilities with a consistent dark, modern UI system.
         </h1>
 
-        <p className="mt-5 max-w-2xl text-lg text-stone-700">
-          Your Vite + React + Tailwind setup is ready. Add one focused tool at a time,
-          keep the UX sharp, and ship fast.
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+          This project now follows theme-first Tailwind rules. Reuse shared tokens,
+          avoid one-off values, and keep every screen tech-forward and readable.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
-          <button className="rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-700">
+          <Link
+            to={tools[0]?.href ?? '/'}
+            className="inline-flex items-center rounded-full bg-brand-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-950"
+          >
             Build first tool
-          </button>
-          <button className="rounded-full border border-stone-300 bg-white/80 px-6 py-3 text-sm font-semibold text-stone-700 transition hover:border-stone-500 hover:text-stone-900">
-            View roadmap
-          </button>
+          </Link>
+          <a
+            href="#tools"
+            className="inline-flex items-center rounded-full border border-surface-700 bg-surface-800 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-brand-400/50 hover:text-brand-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-950"
+          >
+            Browse tools
+          </a>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {tools.map((tool, index) => (
-            <a
+        <div id="tools" className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {tools.map((tool) => (
+            <Link
               key={tool.name}
-              href={tool.href}
-              className="card-appear block rounded-3xl border border-white/70 bg-white/70 p-5 shadow-[0_12px_40px_rgba(120,80,35,0.12)] backdrop-blur transition hover:scale-[1.02] hover:bg-white/90"
-              style={{ animationDelay: `${index * 120}ms` }}
+              to={tool.href}
+              className="group flex h-full flex-col rounded-2xl border border-surface-700 bg-surface-800/80 p-5 shadow-panel transition duration-200 hover:-translate-y-1 hover:border-brand-400/40 hover:bg-surface-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-950"
             >
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-stone-500">
+              <p
+                className={`inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
+                  statusStyles[tool.status] ?? statusStyles.Planned
+                }`}
+              >
                 {tool.status}
               </p>
-              <h2 className="mt-3 text-xl font-bold text-stone-900">{tool.name}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-stone-700">{tool.summary}</p>
-            </a>
+              <h2 className="mt-4 text-xl font-semibold text-slate-100">{tool.name}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-300">{tool.summary}</p>
+              <span className="mt-auto pt-6 text-sm font-semibold text-brand-300 transition group-hover:text-brand-200">
+                Open tool
+              </span>
+            </Link>
           ))}
         </div>
       </section>

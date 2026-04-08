@@ -1,11 +1,10 @@
-import React from 'react'
+import ToolPlaceholder from '../components/ToolPlaceholder'
 
 export default function TextCleanup() {
   return (
-    <div className="p-10">
-      <a href="/" className="text-amber-800 hover:underline">← Back to tools</a>
-      <h1 className="mt-6 text-4xl font-bold">Text Cleanup Pad</h1>
-      <p className="mt-4 text-stone-700">Tool implementation coming soon...</p>
-    </div>
+    <ToolPlaceholder
+      title="Text Cleanup Pad"
+      description="Clean pasted notes by normalizing punctuation, spacing, and casing while preserving the intended meaning."
+    />
   )
 }
