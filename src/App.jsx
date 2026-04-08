@@ -3,16 +3,19 @@ const tools = [
     name: 'Image Batch Resize',
     summary: 'Drop a folder of screenshots and export optimized variants in one click.',
     status: 'Planned',
+    href: 'https://resize.apatel.xyz',
   },
   {
     name: 'JSON Shape Diff',
     summary: 'Compare two payloads and highlight schema drift before it breaks a deploy.',
     status: 'In progress',
+    href: 'https://diff.apatel.xyz',
   },
   {
     name: 'Text Cleanup Pad',
     summary: 'Normalize spacing, punctuation, and casing for messy copy-pasted notes.',
     status: 'Planned',
+    href: 'https://cleanup.apatel.xyz',
   },
 ]
 
@@ -44,9 +47,10 @@ export default function App() {
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {tools.map((tool, index) => (
-            <article
+            <a
               key={tool.name}
-              className="card-appear rounded-3xl border border-white/70 bg-white/70 p-5 shadow-[0_12px_40px_rgba(120,80,35,0.12)] backdrop-blur"
+              href={tool.href}
+              className="card-appear block rounded-3xl border border-white/70 bg-white/70 p-5 shadow-[0_12px_40px_rgba(120,80,35,0.12)] backdrop-blur transition hover:scale-[1.02] hover:bg-white/90"
               style={{ animationDelay: `${index * 120}ms` }}
             >
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-stone-500">
@@ -54,7 +58,7 @@ export default function App() {
               </p>
               <h2 className="mt-3 text-xl font-bold text-stone-900">{tool.name}</h2>
               <p className="mt-3 text-sm leading-relaxed text-stone-700">{tool.summary}</p>
-            </article>
+            </a>
           ))}
         </div>
       </section>
