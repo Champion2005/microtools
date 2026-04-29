@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Clock, Info, Settings2, TerminalSquare } from 'lucide-react';
 import cronstrue from 'cronstrue';
-import cronParser from 'cron-parser';
+import { parseExpression } from 'cron-parser';
 
 const COMMON_CRONS = [
   { expr: '* * * * *', label: 'Every minute' },
@@ -88,9 +88,7 @@ export default function CronTranslator() {
     try {
       const trans = cronstrue.toString(cron, { throwExceptionOnParseError: true });
       
-      // Robust interop for cron-parser
-      const parser = cronParser.parseExpression ? cronParser : (cronParser.default || cronParser);
-      const interval = parser.parseExpression(cron);
+      const interval = parseExpression(cron);
       const times = [];
       for (let i = 0; i < 5; i++) {
         times.push(interval.next().toDate());
@@ -183,34 +181,38 @@ export default function CronTranslator() {
             )}
           </div>
 
-          <div className="bg-surface-900 border border-surface-700 rounded-xl p-6">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
-              <Info className="w-4 h-4" /> Translation
-            </h2>
-            <p className="text-xl font-medium text-slate-100 leading-relaxed">
-              {translation || <span className="text-slate-500 italic">Enter a valid cron expression...</span>}
-            </p>
-          </div>
+          {!builderMode && (
+            <>
+              <div className="bg-surface-900 border border-surface-700 rounded-xl p-6">
+                <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
+                  <Info className="w-4 h-4" /> Translation
+                </h2>
+                <p className="text-xl font-medium text-slate-100 leading-relaxed">
+                  {translation || <span className="text-slate-500 italic">Enter a valid cron expression...</span>}
+                </p>
+              </div>
 
-          <div className="bg-surface-900 border border-surface-700 rounded-xl p-6">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
-              <Clock className="w-4 h-4" /> Next Executions (Local Time)
-            </h2>
-            {upcoming.length > 0 ? (
-              <ul className="space-y-3">
-                {upcoming.map((date, idx) => (
-                  <li key={idx} className="flex justify-between items-center py-2 border-b border-surface-800 last:border-0">
-                    <span className="text-slate-200">{date.toLocaleDateString()}</span>
-                    <span className="text-brand-300 font-mono text-sm bg-brand-500/10 px-2 py-1 rounded">
-                      {date.toLocaleTimeString()}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-sm text-slate-500 italic">No upcoming executions calculated.</p>
-            )}
-          </div>
+              <div className="bg-surface-900 border border-surface-700 rounded-xl p-6">
+                <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
+                  <Clock className="w-4 h-4" /> Next Executions (Local Time)
+                </h2>
+                {upcoming.length > 0 ? (
+                  <ul className="space-y-3">
+                    {upcoming.map((date, idx) => (
+                      <li key={idx} className="flex justify-between items-center py-2 border-b border-surface-800 last:border-0">
+                        <span className="text-slate-200">{date.toLocaleDateString()}</span>
+                        <span className="text-brand-300 font-mono text-sm bg-brand-500/10 px-2 py-1 rounded">
+                          {date.toLocaleTimeString()}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-sm text-slate-500 italic">No upcoming executions calculated.</p>
+                )}
+              </div>
+            </>
+          )}
         </div>
 
         <div className="lg:col-span-5 flex flex-col gap-6">

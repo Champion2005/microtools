@@ -12,6 +12,10 @@ import CronTranslator from './pages/CronTranslator'
 import TypeGenerator from './pages/TypeGenerator'
 import SvgOptimizer from './pages/SvgOptimizer'
 import MockDataGenerator from './pages/MockDataGenerator'
+import RegexPlayground from './pages/RegexPlayground'
+import CurlToCode from './pages/CurlToCode'
+import ColorExtractor from './pages/ColorExtractor'
+import ColorExtractor from './pages/ColorExtractor'
 
 const tools = [
   {
@@ -110,6 +114,31 @@ const tools = [
     href: '/hash-generator',
     isAvailable: true,
   },
+
+  {
+    name: 'RegEx Playground',
+    summary: 'A real-time tester with syntax highlighting that explains exactly what each part of your pattern is doing.',
+    status: 'Preview',
+    category: 'Text & Content',
+    href: '/regex-playground',
+    isAvailable: true,
+  },
+  {
+    name: 'CURL to Code Converter',
+    summary: 'Paste a standard curl command to instantly generate production-ready code snippets.',
+    status: 'Preview',
+    category: 'Data & Conversion',
+    href: '/curl-to-code',
+    isAvailable: true,
+  },
+  {
+    name: 'Color Palette Extractor',
+    summary: 'Extract dominant colors from images, check WCAG, and generate CSS/Tailwind variables.',
+    status: 'Preview',
+    category: 'Media & Assets',
+    href: '/color-extractor',
+    isAvailable: true,
+  },
 ]
 
 export default function App() {
@@ -129,7 +158,12 @@ export default function App() {
         <Route path="/type-generator" element={<TypeGenerator />} />
         <Route path="/svg-optimizer" element={<SvgOptimizer />} />
         <Route path="/mock-data-generator" element={<MockDataGenerator />} />
+      
+        <Route path="/regex-playground" element={<RegexPlayground />} />
+        <Route path="/curl-to-code" element={<CurlToCode />} />
+        <Route path="/color-extractor" element={<ColorExtractor />} />
       </Routes>
+
     </Router>
   )
 }
