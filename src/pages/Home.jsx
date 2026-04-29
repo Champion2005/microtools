@@ -54,7 +54,7 @@ export default function Home({ tools }) {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
-          A collection of lightweight, single-purpose utilities for everyday tasks.
+          A collection of {availableCount} lightweight, single-purpose utilities for everyday tasks.
           Fast, minimal, and running entirely locally in your browser.
         </p>
 
@@ -74,20 +74,6 @@ export default function Home({ tools }) {
           </a>
         </div>
 
-        <dl className="mx-auto mt-16 grid max-w-3xl gap-4 sm:grid-cols-3 motion-enter motion-enter-delay-1">
-          <div className="rounded-2xl border border-surface-800 bg-surface-900/50 p-5">
-            <dt className="text-xs font-medium uppercase tracking-wider text-slate-500">Available Tools</dt>
-            <dd className="mt-2 text-3xl font-semibold tracking-tight text-slate-100">{availableCount}</dd>
-          </div>
-          <div className="rounded-2xl border border-surface-800 bg-surface-900/50 p-5">
-            <dt className="text-xs font-medium uppercase tracking-wider text-slate-500">Data Processing</dt>
-            <dd className="mt-2 text-3xl font-semibold tracking-tight text-slate-100">Local Only</dd>
-          </div>
-          <div className="rounded-2xl border border-surface-800 bg-surface-900/50 p-5">
-            <dt className="text-xs font-medium uppercase tracking-wider text-slate-500">AI Integration</dt>
-            <dd className="mt-2 text-3xl font-semibold tracking-tight text-slate-100">MCP Ready</dd>
-          </div>
-        </dl>
       </header>
 
       <section id="tools" className="mx-auto mt-24 max-w-5xl motion-enter motion-enter-delay-2">
