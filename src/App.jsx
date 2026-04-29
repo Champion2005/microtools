@@ -7,6 +7,8 @@ import QrGenerator from './pages/QrGenerator'
 import PdfMerge from './pages/PdfMerge'
 import CsvToJson from './pages/CsvToJson'
 import MarkdownPreview from './pages/MarkdownPreview'
+import JwtInspector from './pages/JwtInspector'
+import CronTranslator from './pages/CronTranslator'
 
 const tools = [
   {
@@ -58,6 +60,20 @@ const tools = [
     href: '/markdown-preview',
     isAvailable: true,
   },
+  {
+    name: 'JWT Inspector',
+    summary: 'Safely decode and inspect JSON Web Tokens locally, including human-readable expiration times.',
+    status: 'Preview',
+    href: '/jwt-inspector',
+    isAvailable: true,
+  },
+  {
+    name: 'Cron Translator',
+    summary: 'Convert cryptic cron schedule expressions into plain English and calculate their exact next run times.',
+    status: 'Preview',
+    href: '/cron-translator',
+    isAvailable: true,
+  },
 ]
 
 export default function App() {
@@ -72,6 +88,8 @@ export default function App() {
         <Route path="/pdf-merge" element={<PdfMerge />} />
         <Route path="/csv-to-json" element={<CsvToJson />} />
         <Route path="/markdown-preview" element={<MarkdownPreview />} />
+        <Route path="/jwt-inspector" element={<JwtInspector />} />
+        <Route path="/cron-translator" element={<CronTranslator />} />
       </Routes>
     </Router>
   )
