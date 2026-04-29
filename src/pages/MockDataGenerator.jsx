@@ -16,6 +16,7 @@ const FIELD_TYPES = [
   { value: 'boolean', label: 'Boolean' },
   { value: 'number', label: 'Number (1-1000)' },
 ];
+const PREVIEW_LIMIT = 50;
 
 export default function MockDataGenerator() {
   const [schema, setSchema] = useState([
@@ -25,9 +26,6 @@ export default function MockDataGenerator() {
     { id: 4, name: 'role', type: 'jobTitle' },
   ]);
   const [rowCount, setRowCount] = useState(10);
-  const [format, setFormat] = useState('json'); // json or csv
-  const [copied, setCopied] = useState(false);
-
   const generateData = (count) => {
     faker.seed(123); // Consistent preview
     const data = [];
@@ -54,7 +52,7 @@ export default function MockDataGenerator() {
     return data;
   };
 
-  const previewData = useMemo(() => generateData(Math.min(rowCount, 50)), [schema, rowCount]);
+  const previewData = useMemo(() => generateData(Math.min(rowCount, PREVIEW_LIMIT)), [schema, rowCount]);
 
   const addField = () => {
     setSchema([...schema, { id: Date.now(), name: 'new_field', type: 'fullName' }]);
@@ -207,12 +205,14 @@ export default function MockDataGenerator() {
         <div className="lg:col-span-8 flex flex-col gap-4">
           <div className="flex justify-between items-center px-1">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-200">Data Preview</h2>
-            <span className="text-xs text-slate-500">Showing up to {Math.min(rowCount, 5)} rows</span>
+            <span className="text-xs text-slate-500">
+              Showing {previewData.length} of {rowCount} rows (preview max {PREVIEW_LIMIT})
+            </span>
           </div>
           
-          <div className="bg-surface-900 border border-surface-700 rounded-xl overflow-hidden flex-1 max-h-[700px] overflow-auto">
+          <div className="bg-surface-900 border border-surface-700 rounded-xl flex-1 max-h-[700px] overflow-auto">
             {previewData.length > 0 ? (
-              <table className="w-full text-left text-sm whitespace-nowrap">
+              <table className="min-w-max text-left text-sm whitespace-nowrap">
                 <thead className="bg-surface-800/50 text-slate-400 sticky top-0 backdrop-blur-md">
                   <tr>
                     {schema.map(s => (

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Download, Copy, Check, Info } from 'lucide-react';
+import { ArrowLeft, Download, Copy, Check, Info, UploadCloud } from 'lucide-react';
 import { optimize } from 'svgo';
 
 const DEFAULT_SVG = `<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -23,6 +23,7 @@ export default function SvgOptimizer() {
   const [stats, setStats] = useState(null);
   const [error, setError] = useState(null);
   const [copied, setCopied] = useState(false);
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     if (!inputSvg.trim()) {
@@ -88,6 +89,21 @@ export default function SvgOptimizer() {
     a.download = 'optimized.svg';
     a.click();
     URL.revokeObjectURL(url);
+  };
+
+  const handleFileUpload = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const text = await file.text();
+      setInputSvg(text);
+      setError(null);
+    } catch {
+      setError('Failed to read SVG file.');
+    } finally {
+      event.target.value = '';
+    }
   };
 
   return (
