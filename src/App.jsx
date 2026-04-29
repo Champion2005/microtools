@@ -6,22 +6,53 @@ import TextCleanup from './pages/TextCleanup'
 
 const tools = [
   {
-    name: 'Image Batch Resize',
-    summary: 'Batch process screenshots into consistent dimensions and file sizes.',
-    status: 'Planned',
-    href: '/resize-tool',
-  },
-  {
-    name: 'JSON Shape Diff',
-    summary: 'Compare two payloads and flag schema drift before it reaches production.',
-    status: 'In Progress',
+    name: 'JSON Diff',
+    summary: 'Compare JSON objects and quickly spot changed keys, missing fields, and type mismatches.',
+    status: 'Preview',
     href: '/json-diff',
+    isAvailable: true,
   },
   {
-    name: 'Text Cleanup Pad',
-    summary: 'Normalize casing, punctuation, and spacing from messy pasted content.',
-    status: 'Planned',
+    name: 'Text Cleanup',
+    summary: 'Fix spacing, normalize line breaks, and tidy pasted text for notes, docs, and messages.',
+    status: 'Preview',
     href: '/text-cleanup',
+    isAvailable: true,
+  },
+  {
+    name: 'Image Resizer',
+    summary: 'Resize screenshots and photos to common dimensions without leaving the browser.',
+    status: 'Preview',
+    href: '/resize-tool',
+    isAvailable: true,
+  },
+  {
+    name: 'QR Generator',
+    summary: 'Create QR codes for links, Wi-Fi credentials, contact cards, and event check-ins.',
+    status: 'Coming Soon',
+    href: null,
+    isAvailable: false,
+  },
+  {
+    name: 'PDF Merge',
+    summary: 'Combine multiple PDF files into one document for sharing, printing, or record-keeping.',
+    status: 'Coming Soon',
+    href: null,
+    isAvailable: false,
+  },
+  {
+    name: 'CSV to JSON',
+    summary: 'Convert spreadsheet exports into clean JSON for APIs, prototypes, and automation scripts.',
+    status: 'Coming Soon',
+    href: null,
+    isAvailable: false,
+  },
+  {
+    name: 'Markdown Preview',
+    summary: 'Write markdown and instantly preview formatted output before publishing or sharing.',
+    status: 'Coming Soon',
+    href: null,
+    isAvailable: false,
   },
 ]
 
