@@ -3,6 +3,10 @@ import Home from './pages/Home'
 import ResizeTool from './pages/ResizeTool'
 import JsonDiff from './pages/JsonDiff'
 import TextCleanup from './pages/TextCleanup'
+import QrGenerator from './pages/QrGenerator'
+import PdfMerge from './pages/PdfMerge'
+import CsvToJson from './pages/CsvToJson'
+import MarkdownPreview from './pages/MarkdownPreview'
 
 const tools = [
   {
@@ -29,30 +33,30 @@ const tools = [
   {
     name: 'QR Generator',
     summary: 'Create QR codes for links, Wi-Fi credentials, contact cards, and event check-ins.',
-    status: 'Coming Soon',
-    href: null,
-    isAvailable: false,
+    status: 'Preview',
+    href: '/qr-generator',
+    isAvailable: true,
   },
   {
     name: 'PDF Merge',
     summary: 'Combine multiple PDF files into one document for sharing, printing, or record-keeping.',
-    status: 'Coming Soon',
-    href: null,
-    isAvailable: false,
+    status: 'Preview',
+    href: '/pdf-merge',
+    isAvailable: true,
   },
   {
     name: 'CSV to JSON',
     summary: 'Convert spreadsheet exports into clean JSON for APIs, prototypes, and automation scripts.',
-    status: 'Coming Soon',
-    href: null,
-    isAvailable: false,
+    status: 'Preview',
+    href: '/csv-to-json',
+    isAvailable: true,
   },
   {
     name: 'Markdown Preview',
     summary: 'Write markdown and instantly preview formatted output before publishing or sharing.',
-    status: 'Coming Soon',
-    href: null,
-    isAvailable: false,
+    status: 'Preview',
+    href: '/markdown-preview',
+    isAvailable: true,
   },
 ]
 
@@ -64,6 +68,10 @@ export default function App() {
         <Route path="/resize-tool" element={<ResizeTool />} />
         <Route path="/json-diff" element={<JsonDiff />} />
         <Route path="/text-cleanup" element={<TextCleanup />} />
+        <Route path="/qr-generator" element={<QrGenerator />} />
+        <Route path="/pdf-merge" element={<PdfMerge />} />
+        <Route path="/csv-to-json" element={<CsvToJson />} />
+        <Route path="/markdown-preview" element={<MarkdownPreview />} />
       </Routes>
     </Router>
   )
