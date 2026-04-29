@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Clock, Info } from 'lucide-react';
 import cronstrue from 'cronstrue';
-import parser from 'cron-parser';
+import { parseExpression } from 'cron-parser';
 
 const COMMON_CRONS = [
   { expr: '* * * * *', label: 'Every minute' },
@@ -21,7 +21,7 @@ export default function CronTranslator() {
     try {
       const trans = cronstrue.toString(cron, { throwExceptionOnParseError: true });
       
-      const interval = parser.parseExpression(cron);
+      const interval = parseExpression(cron);
       const times = [];
       for (let i = 0; i < 5; i++) {
         times.push(interval.next().toDate());
@@ -35,7 +35,7 @@ export default function CronTranslator() {
 
   return (
     <div className="min-h-screen bg-surface-950 text-slate-300 p-6">
-      <header className="max-w-4xl mx-auto mb-8 flex items-center gap-4">
+      <header className="max-w-6xl mx-auto mb-8 flex items-center gap-4">
         <Link to="/" className="p-2 rounded-full hover:bg-surface-800 transition">
           <ArrowLeft className="w-5 h-5 text-slate-400" />
         </Link>
@@ -45,9 +45,9 @@ export default function CronTranslator() {
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+      <main className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <div className="flex flex-col gap-6">
+        <div className="lg:col-span-7 flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <div className="flex justify-between items-center">
               <label className="text-sm font-semibold uppercase tracking-wider text-slate-400">Cron Expression</label>
@@ -92,7 +92,7 @@ export default function CronTranslator() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
+        <div className="lg:col-span-5 flex flex-col gap-6">
           <div className="bg-surface-900 border border-surface-700 rounded-xl p-6">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">Common Examples</h2>
             <div className="grid grid-cols-1 gap-2">
