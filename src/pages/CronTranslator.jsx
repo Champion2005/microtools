@@ -100,27 +100,38 @@ export default function CronTranslator() {
     }
   }, [cron]);
 
-  const BuilderSelect = ({ label, value, setter, options }) => (
-    <div className="flex flex-col gap-1.5 flex-1 min-w-[120px]">
-      <label className="text-xs text-slate-400 font-semibold uppercase">{label}</label>
-      <div className="relative">
+  const BuilderSelect = ({ label, value, setter, options }) => {
+    const handlePresetChange = (e) => {
+      const next = e.target.value;
+      if (next) setter(next);
+      e.target.value = '';
+    };
+
+    return (
+      <div className="flex flex-col gap-1.5 flex-1 min-w-[140px]">
+        <label className="text-xs text-slate-400 font-semibold uppercase">{label}</label>
         <input 
           type="text" 
           value={value}
           onChange={(e) => setter(e.target.value)}
           className="w-full bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-brand-500 font-mono"
         />
-        <select 
-          onChange={(e) => setter(e.target.value)}
-          className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
-          title="Quick select options"
+        <select
+          defaultValue=""
+          onChange={handlePresetChange}
+          className="w-full bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-brand-500"
+          title={`Quick presets for ${label}`}
         >
-          <option value="" disabled>Presets...</option>
-          {options.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+          <option value="" disabled className="bg-surface-900 text-slate-400">Pick a preset…</option>
+          {options.map((o) => (
+            <option key={o.value} value={o.value} className="bg-surface-900 text-slate-100">
+              {o.label}
+            </option>
+          ))}
         </select>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="min-h-screen bg-surface-950 text-slate-300 p-6">
