@@ -54,7 +54,7 @@ export default function MockDataGenerator() {
     return data;
   };
 
-  const previewData = useMemo(() => generateData(Math.min(rowCount, 5)), [schema, rowCount]);
+  const previewData = useMemo(() => generateData(Math.min(rowCount, 50)), [schema, rowCount]);
 
   const addField = () => {
     setSchema([...schema, { id: Date.now(), name: 'new_field', type: 'fullName' }]);

@@ -127,6 +127,19 @@ export default function SvgOptimizer() {
         <div className="flex flex-col gap-4 h-full">
           <div className="flex justify-between items-center px-1">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-200">Raw Input SVG</h2>
+            <button 
+              onClick={() => fileInputRef.current?.click()}
+              className="text-xs flex items-center gap-1 text-brand-400 hover:text-brand-300 transition"
+            >
+              <UploadCloud className="w-4 h-4" /> Upload File
+            </button>
+            <input 
+              type="file" 
+              accept=".svg" 
+              className="hidden" 
+              ref={fileInputRef}
+              onChange={handleFileUpload}
+            />
           </div>
           
           <div className="relative flex-1">

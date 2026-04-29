@@ -143,7 +143,7 @@ export default function MarkdownPreview() {
           </div>
           <div 
             ref={previewRef}
-            className="w-full flex-1 bg-white border border-surface-700 rounded-xl p-6 overflow-y-auto text-slate-900 prose prose-slate max-w-none"
+            className="w-full flex-1 bg-surface-900 border border-surface-700 rounded-xl p-6 overflow-y-auto text-slate-300 prose prose-invert prose-slate max-w-none"
             dangerouslySetInnerHTML={{ __html: htmlOutput || '<p class="text-slate-400 italic">Preview will appear here...</p>' }}
           />
         </div>

@@ -7,7 +7,7 @@ import QrGenerator from './pages/QrGenerator'
 import PdfMerge from './pages/PdfMerge'
 import CsvToJson from './pages/CsvToJson'
 import MarkdownPreview from './pages/MarkdownPreview'
-import JwtInspector from './pages/JwtInspector'
+import HashGenerator from './pages/HashGenerator'
 import CronTranslator from './pages/CronTranslator'
 import TypeGenerator from './pages/TypeGenerator'
 import SvgOptimizer from './pages/SvgOptimizer'
@@ -103,11 +103,11 @@ const tools = [
     isAvailable: true,
   },
   {
-    name: 'JWT Inspector',
-    summary: 'Safely decode and inspect JSON Web Tokens locally, including human-readable expiration times.',
+    name: 'Hash & Secret Generator',
+    summary: 'Generate secure API keys, tokens, and compute cryptographically secure hashes locally.',
     status: 'Preview',
     category: 'Security & Auth',
-    href: '/jwt-inspector',
+    href: '/hash-generator',
     isAvailable: true,
   },
 ]
@@ -124,7 +124,7 @@ export default function App() {
         <Route path="/pdf-merge" element={<PdfMerge />} />
         <Route path="/csv-to-json" element={<CsvToJson />} />
         <Route path="/markdown-preview" element={<MarkdownPreview />} />
-        <Route path="/jwt-inspector" element={<JwtInspector />} />
+        <Route path="/hash-generator" element={<HashGenerator />} />
         <Route path="/cron-translator" element={<CronTranslator />} />
         <Route path="/type-generator" element={<TypeGenerator />} />
         <Route path="/svg-optimizer" element={<SvgOptimizer />} />
