@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Clock, Info } from 'lucide-react';
 import cronstrue from 'cronstrue';
-import { parseExpression } from 'cron-parser';
+import * as cronParserModule from 'cron-parser';
 
 const COMMON_CRONS = [
   { expr: '* * * * *', label: 'Every minute' },
@@ -21,7 +21,8 @@ export default function CronTranslator() {
     try {
       const trans = cronstrue.toString(cron, { throwExceptionOnParseError: true });
       
-      const interval = parseExpression(cron);
+      const parser = cronParserModule.default || cronParserModule;
+      const interval = parser.parseExpression(cron);
       const times = [];
       for (let i = 0; i < 5; i++) {
         times.push(interval.next().toDate());
