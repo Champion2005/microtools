@@ -9,26 +9,72 @@ import CsvToJson from './pages/CsvToJson'
 import MarkdownPreview from './pages/MarkdownPreview'
 import JwtInspector from './pages/JwtInspector'
 import CronTranslator from './pages/CronTranslator'
+import TypeGenerator from './pages/TypeGenerator'
+import SvgOptimizer from './pages/SvgOptimizer'
+import MockDataGenerator from './pages/MockDataGenerator'
 
 const tools = [
+  {
+    name: 'CSV to JSON',
+    summary: 'Convert spreadsheet exports into clean JSON for APIs, prototypes, and automation scripts.',
+    status: 'Preview',
+    category: 'Data & Conversion',
+    href: '/csv-to-json',
+    isAvailable: true,
+  },
   {
     name: 'JSON Diff',
     summary: 'Compare JSON objects and quickly spot changed keys, missing fields, and type mismatches.',
     status: 'Preview',
+    category: 'Data & Conversion',
     href: '/json-diff',
+    isAvailable: true,
+  },
+  {
+    name: 'Type Generator',
+    summary: 'Instantly convert JSON into strict, production-ready types or structs.',
+    status: 'Preview',
+    category: 'Data & Conversion',
+    href: '/type-generator',
+    isAvailable: true,
+  },
+  {
+    name: 'Mock Data Generator',
+    summary: 'Generate realistic fake data schemas for database seeding and UI prototyping.',
+    status: 'Preview',
+    category: 'Data & Conversion',
+    href: '/mock-data-generator',
     isAvailable: true,
   },
   {
     name: 'Text Cleanup',
     summary: 'Fix spacing, normalize line breaks, and tidy pasted text for notes, docs, and messages.',
     status: 'Preview',
+    category: 'Text & Content',
     href: '/text-cleanup',
     isAvailable: true,
   },
   {
-    name: 'Image Resizer',
-    summary: 'Resize screenshots and photos to common dimensions without leaving the browser.',
+    name: 'Markdown Preview',
+    summary: 'Write markdown and instantly preview formatted output before publishing or sharing.',
     status: 'Preview',
+    category: 'Text & Content',
+    href: '/markdown-preview',
+    isAvailable: true,
+  },
+  {
+    name: 'Cron Translator',
+    summary: 'Convert cryptic cron schedule expressions into plain English and calculate their exact next run times.',
+    status: 'Preview',
+    category: 'Text & Content',
+    href: '/cron-translator',
+    isAvailable: true,
+  },
+  {
+    name: 'Image Resizer',
+    summary: 'Resize screenshots and photos to common dimensions or scaling factors.',
+    status: 'Preview',
+    category: 'Media & Assets',
     href: '/resize-tool',
     isAvailable: true,
   },
@@ -36,6 +82,7 @@ const tools = [
     name: 'QR Generator',
     summary: 'Create QR codes for links, Wi-Fi credentials, contact cards, and event check-ins.',
     status: 'Preview',
+    category: 'Media & Assets',
     href: '/qr-generator',
     isAvailable: true,
   },
@@ -43,35 +90,24 @@ const tools = [
     name: 'PDF Merge',
     summary: 'Combine multiple PDF files into one document for sharing, printing, or record-keeping.',
     status: 'Preview',
+    category: 'Media & Assets',
     href: '/pdf-merge',
     isAvailable: true,
   },
   {
-    name: 'CSV to JSON',
-    summary: 'Convert spreadsheet exports into clean JSON for APIs, prototypes, and automation scripts.',
+    name: 'SVG Optimizer',
+    summary: 'Clean, minify, and strip metadata from bloated SVG files.',
     status: 'Preview',
-    href: '/csv-to-json',
-    isAvailable: true,
-  },
-  {
-    name: 'Markdown Preview',
-    summary: 'Write markdown and instantly preview formatted output before publishing or sharing.',
-    status: 'Preview',
-    href: '/markdown-preview',
+    category: 'Media & Assets',
+    href: '/svg-optimizer',
     isAvailable: true,
   },
   {
     name: 'JWT Inspector',
     summary: 'Safely decode and inspect JSON Web Tokens locally, including human-readable expiration times.',
     status: 'Preview',
+    category: 'Security & Auth',
     href: '/jwt-inspector',
-    isAvailable: true,
-  },
-  {
-    name: 'Cron Translator',
-    summary: 'Convert cryptic cron schedule expressions into plain English and calculate their exact next run times.',
-    status: 'Preview',
-    href: '/cron-translator',
     isAvailable: true,
   },
 ]
@@ -90,6 +126,9 @@ export default function App() {
         <Route path="/markdown-preview" element={<MarkdownPreview />} />
         <Route path="/jwt-inspector" element={<JwtInspector />} />
         <Route path="/cron-translator" element={<CronTranslator />} />
+        <Route path="/type-generator" element={<TypeGenerator />} />
+        <Route path="/svg-optimizer" element={<SvgOptimizer />} />
+        <Route path="/mock-data-generator" element={<MockDataGenerator />} />
       </Routes>
     </Router>
   )

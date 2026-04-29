@@ -10,6 +10,7 @@
     "start": "serve -s dist -l 3000"
   },
   "dependencies": {
+    "@faker-js/faker": "^10.4.0",
     "@tailwindcss/typography": "^0.5.19",
     "clsx": "^2.1.1",
     "cron-parser": "^5.5.0",
@@ -24,10 +25,12 @@
     "pdf-lib": "^1.17.1",
     "pica": "^9.0.1",
     "qrcode": "^1.5.4",
+    "quicktype-core": "^23.2.6",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-router-dom": "^7.3.0",
     "serve": "^14.2.4",
+    "svgo": "^4.0.1",
     "tailwind-merge": "^3.5.0"
   },
   "engines": {

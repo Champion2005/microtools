@@ -91,18 +91,28 @@ export default function Home({ tools }) {
       </header>
 
       <section id="tools" className="mx-auto mt-24 max-w-5xl motion-enter motion-enter-delay-2">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-surface-800 pb-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-surface-800 pb-6 mb-8">
           <div>
             <h2 className="font-display text-2xl font-bold text-slate-50">Utilities</h2>
             <p className="mt-2 text-slate-400">Click any card below to launch the tool.</p>
           </div>
         </div>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {tools.map((tool) => (
-            <ToolCard key={tool.name} tool={tool} />
-          ))}
-        </div>
+        {['Data & Conversion', 'Text & Content', 'Media & Assets', 'Security & Auth'].map(category => {
+          const categoryTools = tools.filter(t => t.category === category);
+          if (categoryTools.length === 0) return null;
+          
+          return (
+            <div key={category} className="mb-12">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-6">{category}</h3>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {categoryTools.map((tool) => (
+                  <ToolCard key={tool.name} tool={tool} />
+                ))}
+              </div>
+            </div>
+          )
+        })}
       </section>
 
       <footer className="mx-auto mt-24 max-w-5xl border-t border-surface-800 pt-8 text-center motion-enter motion-enter-delay-3">
