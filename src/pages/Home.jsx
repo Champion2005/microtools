@@ -66,7 +66,7 @@ export default function Home({ tools }) {
             Browse Tools
           </a>
           <a
-            href="https://github.com/example/microtools-mcp"
+            href="https://github.com/Champion2005/microtools-mcp"
             target="_blank" rel="noreferrer"
             className="inline-flex items-center rounded-full border border-surface-700 bg-surface-800 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-brand-400/50 hover:text-brand-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-950"
           >
