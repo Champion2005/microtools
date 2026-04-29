@@ -65,9 +65,16 @@ export default function Home({ tools }) {
           >
             Browse Tools
           </a>
+          <a
+            href="https://github.com/example/microtools-mcp"
+            target="_blank" rel="noreferrer"
+            className="inline-flex items-center rounded-full border border-surface-700 bg-surface-800 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-brand-400/50 hover:text-brand-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-950"
+          >
+            Get MCP Server
+          </a>
         </div>
 
-        <dl className="mx-auto mt-16 grid max-w-2xl gap-4 sm:grid-cols-2 motion-enter motion-enter-delay-1">
+        <dl className="mx-auto mt-16 grid max-w-3xl gap-4 sm:grid-cols-3 motion-enter motion-enter-delay-1">
           <div className="rounded-2xl border border-surface-800 bg-surface-900/50 p-5">
             <dt className="text-xs font-medium uppercase tracking-wider text-slate-500">Available Tools</dt>
             <dd className="mt-2 text-3xl font-semibold tracking-tight text-slate-100">{availableCount}</dd>
@@ -75,6 +82,10 @@ export default function Home({ tools }) {
           <div className="rounded-2xl border border-surface-800 bg-surface-900/50 p-5">
             <dt className="text-xs font-medium uppercase tracking-wider text-slate-500">Data Processing</dt>
             <dd className="mt-2 text-3xl font-semibold tracking-tight text-slate-100">Local Only</dd>
+          </div>
+          <div className="rounded-2xl border border-surface-800 bg-surface-900/50 p-5">
+            <dt className="text-xs font-medium uppercase tracking-wider text-slate-500">AI Integration</dt>
+            <dd className="mt-2 text-3xl font-semibold tracking-tight text-slate-100">MCP Ready</dd>
           </div>
         </dl>
       </header>
