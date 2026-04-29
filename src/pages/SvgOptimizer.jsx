@@ -166,7 +166,7 @@ export default function SvgOptimizer() {
             <div className="flex-1 bg-white border border-surface-700 rounded-xl overflow-hidden flex items-center justify-center p-4 relative checker-bg">
                <style>{`.checker-bg { background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; }`}</style>
                {outputSvg ? (
-                 <div dangerouslySetInnerHTML={{ __html: outputSvg }} className="max-w-full max-h-full object-contain [&>svg]:max-w-full [&>svg]:max-h-full" />
+                 <div dangerouslySetInnerHTML={{ __html: outputSvg }} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:max-w-full [&>svg]:max-h-full" />
                ) : (
                  <div className="text-slate-400 flex items-center gap-2 bg-surface-950 p-2 rounded">
                    <Info className="w-4 h-4" /> No valid SVG to preview
