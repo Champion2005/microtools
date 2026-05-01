@@ -161,8 +161,8 @@ export default function App() {
         <Route path="/regex-playground" element={<RegexPlayground />} />
         <Route path="/curl-to-code" element={<CurlToCode />} />
         <Route path="/color-extractor" element={<ColorExtractor />} />
+        <Route path="/word-doc-signer" element={<WordDocSigner />} />
       </Routes>
-
     </Router>
   )
 }
