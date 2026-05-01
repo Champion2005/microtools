@@ -139,6 +139,14 @@ const tools = [
     href: '/color-extractor',
     isAvailable: true,
   },
+  {
+    name: 'Word Doc Signer',
+    summary: 'Sign .docx files locally in the browser by adding a handwritten signature image without uploading files to any server.',
+    status: 'Preview',
+    category: 'Text & Content',
+    href: '/word-doc-signer',
+    isAvailable: true,
+  },
 ]
 
 export default function App() {
