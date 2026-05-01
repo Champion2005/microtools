@@ -15,6 +15,7 @@ import MockDataGenerator from './pages/MockDataGenerator'
 import RegexPlayground from './pages/RegexPlayground'
 import CurlToCode from './pages/CurlToCode'
 import ColorExtractor from './pages/ColorExtractor'
+import WordDocSigner from './pages/WordDocSigner'
 
 const tools = [
   {
